@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 # 데이터 파일 읽기
-df = pd.read_csv('RainData/rainData.txt', parse_dates=['일시'])
+df = pd.read_csv('../RainData/rainData.txt', parse_dates=['일시'])
 
 # '일강수량(mm)' 열의 문자열을 숫자로 변환하는 함수
 def parse_rainfall(rainfall_str):

@@ -210,7 +210,7 @@ filePathList = [
 
 item = '사과 썸머킹'
 grade = '특'
-rainDataList = parse_rainfall_data_from_file('RainData/2020_2024JulyRainfallAll.txt')
+rainDataList = parse_rainfall_data_from_file('../RainData/2020_2024JulyRainfallAll.txt')
 title = makeAppleTitle(item, grade)
 
 

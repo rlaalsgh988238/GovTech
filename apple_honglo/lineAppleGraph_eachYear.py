@@ -16,12 +16,16 @@ data['월-일'] = data['날짜'].dt.strftime('%m-%d')
 years = sorted(data['날짜'].dt.year.unique())
 
 # 모든 월-일 조합 생성 (6월 1일부터 12월 31일까지)
-all_dates = pd.date_range(start='2000-06-01', end='2000-12-31')
+all_dates = pd.date_range(start='2000-08-01', end='2000-10-31')
 all_month_days = all_dates.strftime('%m-%d').tolist()
 
-# 서브플롯 생성
+# 15일 간격의 x축 눈금 생성
+xticks_indices = list(range(0, len(all_month_days), 15))
+xticks_labels = [all_month_days[i] for i in xticks_indices]
+
+# 서브플롯 생성 (가로로 나열)
 n_years = len(years)
-fig, axs = plt.subplots(n_years, 1, figsize=(12, 5*n_years), sharex=True)
+fig, axs = plt.subplots(1, n_years, figsize=(5*n_years, 6), sharey=True)
 fig.suptitle('Price Line Plot for Grade "special" (June to December) by Year', fontsize=16)
 
 for idx, year in enumerate(years):
@@ -33,13 +37,16 @@ for idx, year in enumerate(years):
 
     axs[idx].plot(full_year_data['월-일'], full_year_data['가격(원)'], label=f'{year}')
     axs[idx].set_title(f'Year {year}')
-    axs[idx].set_ylabel('Price (Won)')
+    axs[idx].set_xlabel('Month-Day')
     axs[idx].grid(True, linestyle='--', alpha=0.7)
     axs[idx].legend()
 
-# x축 레이블 설정
-plt.xlabel('Month-Day')
-plt.xticks(rotation=45)
+    # x축 눈금 설정
+    axs[idx].set_xticks(xticks_indices)
+    axs[idx].set_xticklabels(xticks_labels, rotation=45)
+
+# y축 레이블 설정 (첫 번째 서브플롯에만)
+axs[0].set_ylabel('Price (Won)')
 
 # 레이아웃 조정
 plt.tight_layout()

@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 
 # 데이터 로드
 apple_df = pd.read_csv('AppleData/2000_2024_Apple_Honglo_Data.csv')
-oil_df = pd.read_csv('OilData/output.csv')
-rain_df = pd.read_csv('RainData/daily_avg_rainfall.csv')
+oil_df = pd.read_csv('../OilData/output.csv')
+rain_df = pd.read_csv('../RainData/daily_avg_rainfall.csv')
 
 # 데이터 전처리
 apple_df['날짜'] = pd.to_datetime(apple_df['날짜'])
