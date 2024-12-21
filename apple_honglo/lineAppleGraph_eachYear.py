@@ -7,7 +7,7 @@ data = pd.read_csv('apple_preprocessed.csv')
 data['날짜'] = pd.to_datetime(data['날짜'])
 
 # 6월부터 12월까지의 데이터 필터링 및 '특' 등급만 선택
-data = data[(data['날짜'].dt.month >= 6) & (data['날짜'].dt.month <= 12) & (data['등급'] == '특')]
+data = data[(data['날짜'].dt.month >= 6) & (data['날짜'].dt.month <= 12) & (data['등급'] == '중')]
 
 # 월-일 형식으로 변환
 data['월-일'] = data['날짜'].dt.strftime('%m-%d')
